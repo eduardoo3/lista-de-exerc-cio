@@ -1,0 +1,22 @@
+#include <iostream>
+//Faça um programa que preencha um vetor com 10 nu ́ meros reais, calcule e mostre a quantidade de nu ́ meros negativos e a soma dos nu ́ meros positivos desse vetor.
+int main() {
+    double numeros[10];
+    int quantidade_negativos = 0;
+    double soma_positivos = 0.0;
+//leitura de numeros e contagm de negativos e soma de positivos.
+    std::cout << "Digite 10 números reais:" << std::endl;
+    for (int i = 0; i < 10; ++i) {
+        std::cin >> numeros[i];
+        if (numeros[i] < 0) {
+            quantidade_negativos++;
+            } else {
+            soma_positivos += numeros[i];
+        }
+    }
+//exibiçao de resultados.
+    std::cout << "Quantidade de números negativos: " << quantidade_negativos << std::endl;
+    std::cout << "Soma dos números positivos: " << soma_positivos << std::endl;
+
+    return 0;
+}
