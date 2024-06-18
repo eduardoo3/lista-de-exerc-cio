@@ -1,0 +1,26 @@
+#include <iostream>
+#include <limits>
+
+int main() {
+    const int SIZE = 10;
+    int vetor[SIZE];
+
+    std::cout << "Digite 10 números inteiros:\n";
+    for (int i = 1; i < SIZE; i++) {
+        std::cin >> vetor[i];
+    }
+
+    int max_element = std::numeric_limits<int>::min();
+    int posicao_maior = 1;
+
+    for (int i = 1; i < SIZE; ++i) {
+        if (vetor[i] > max_element) {
+            max_element = vetor[i];
+            posicao_maior = i;
+        }
+    }
+
+    std::cout << "O maior elemento da lista é:" << max_element << " \nna posição " << posicao_maior << std::endl;
+
+    return 0;
+}
