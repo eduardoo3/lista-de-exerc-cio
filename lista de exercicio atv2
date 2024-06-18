@@ -1,0 +1,15 @@
+#include <iostream>
+
+int main() {
+  int valores [6];
+  std::cout << "digite os 6 valores inteirs:\n";
+  for (int i = 0; i<6 ; i++){
+    std::cout << "valor" << i+1 << ":";
+    std::cin >> valores[i];
+  }
+  std::cout << "Os valores lidos foram:" << std::endl;
+  for (int i =01; i < 6; ++i) {
+      std::cout << "Valor " << i + 1 << ": " << valores[i] << std::endl;
+  }
+  return 0;
+}
