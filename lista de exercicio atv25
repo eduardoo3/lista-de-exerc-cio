@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <limits>
+
+int main() {
+    const int size = 10;
+    std::vector<int> aluno(size);
+    std::vector<double> altura(size);
+
+    // Variáveis para armazenar o índice do aluno mais baixo e do mais alto
+    int indexMaisBaixo = 0;
+    int indexMaisAlto = 0;
+
+    // Inicializar alturas para comparação
+    double menorAltura = std::numeric_limits<double>::max();
+    double maiorAltura = std::numeric_limits<double>::min();
+
+    // Leitura dos valores dos alunos e suas alturas
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Digite o número do aluno " << i + 1 << " e sua altura (em metros): ";
+        std::cin >> aluno[i] >> altura[i];
+
+        // Encontrar o aluno mais baixo
+        if (altura[i] < menorAltura) {
+            menorAltura = altura[i];
+            indexMaisBaixo = i;
+        }
+
+        // Encontrar o aluno mais alto
+        if (altura[i] > maiorAltura) {
+            maiorAltura = altura[i];
+            indexMaisAlto = i;
+        }
+    }
+
+    // Mostrar o aluno mais baixo e o mais alto
+    std::cout << "Aluno mais baixo:" << std::endl;
+    std::cout << "Número do aluno: " << aluno[indexMaisBaixo] << ", Altura: " << altura[indexMaisBaixo] << " metros" << std::endl;
+
+    std::cout << "Aluno mais alto:" << std::endl;
+    std::cout << "Número do aluno: " << aluno[indexMaisAlto] << ", Altura: " << altura[indexMaisAlto] << " metros" << std::endl;
+
+    return 0;
+}
