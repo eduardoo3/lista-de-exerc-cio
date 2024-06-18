@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <set>
+#include <unordered_map>
+
+// Função para encontrar e retornar os números duplicados em um vetor
+std::set<int> findDuplicates(const std::vector<int>& vec) {
+    std::unordered_map<int, int> freqMap;
+    std::set<int> duplicates;
+
+    for (int num : vec) {
+        freqMap[num]++;
+        if (freqMap[num] == 2) {
+            duplicates.insert(num);
+        }
+    }
+
+    return duplicates;
+}
+
+int main() {
+    const int SIZE = 10;
+    int vetor[SIZE];
+
+    std::cout << "Digite 10 números: ";
+    for (int i = 0; i < SIZE; ++i) {
+        std::cin >> vetor[i];
+    }
+
+    // Convertendo o vetor para std::vector para usar a função findDuplicates
+    std::vector<int> vec(vetor, vetor + SIZE);
+
+    // Encontrar duplicados
+    std::set<int> duplicates = findDuplicates(vec);
+
+    if (!duplicates.empty()) {
+        std::cout << "Existem números duplicados na lista e eles sao: ";
+        for (int num : duplicates) {
+            std::cout << num << " ";
+        }
+        std::cout << std::endl;
+    } else {
+        std::cout << "Não existem números duplicados na lista." << std::endl;
+    }
+
+    return 0;
+}
