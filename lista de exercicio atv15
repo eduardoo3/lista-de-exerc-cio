@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+
+int main() {
+    int vetor[20];
+
+    std::cout << "Escreva 20 numeros inteiros:\n";
+    for(int i = 0; i < 20; ++i) {
+        std::cin >> vetor[i];
+    }
+
+    // Usando um unordered_set para eliminar duplicatas
+    std::unordered_set<int> uniqueElements;
+    std::vector<int> result;
+
+    for (int i = 0; i < 20; ++i) {
+        // Insere o elemento no set e verifica se ele já estava presente
+        if (uniqueElements.find(vetor[i]) == uniqueElements.end()) {
+            uniqueElements.insert(vetor[i]);
+            result.push_back(vetor[i]);
+        }
+    }
+
+    // Imprime o vetor sem duplicatas
+    std::cout << "Vetor sem duplicatas: ";
+    for (int num : result) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
