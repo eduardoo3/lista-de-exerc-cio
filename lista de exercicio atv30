@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+#include <algorithm> // Para utilizar a função std::sort e std::unique
+
+int main() {
+    const int size = 10;
+    std::vector<int> vetor1(size);
+    std::vector<int> vetor2(size);
+    std::vector<int> intersecao;
+
+    // Leitura dos elementos do primeiro vetor
+    std::cout << "Digite os elementos do primeiro vetor:" << std::endl;
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Elemento " << (i + 1) << ": ";
+        std::cin >> vetor1[i];
+    }
+
+    // Leitura dos elementos do segundo vetor
+    std::cout << "Digite os elementos do segundo vetor:" << std::endl;
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Elemento " << (i + 1) << ": ";
+        std::cin >> vetor2[i];
+    }
+
+    // Ordena os vetores para facilitar a interseção
+    std::sort(vetor1.begin(), vetor1.end());
+    std::sort(vetor2.begin(), vetor2.end());
+
+    // Encontra a interseção entre os vetores
+    std::set_intersection(vetor1.begin(), vetor1.end(),
+                          vetor2.begin(), vetor2.end(),
+                          std::back_inserter(intersecao));
+
+    // Remove elementos repetidos na interseção (não deveria ser necessário com set_intersection, mas por garantia)
+    intersecao.erase(std::unique(intersecao.begin(), intersecao.end()), intersecao.end());
+
+    // Mostra os elementos da interseção
+    std::cout << "Elementos na interseção dos dois vetores:" << std::endl;
+    for (int i = 0; i < intersecao.size(); ++i) {
+        std::cout << intersecao[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
