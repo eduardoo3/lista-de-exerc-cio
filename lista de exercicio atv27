@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+// Função para verificar se um número é primo
+bool isPrime(int num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= std::sqrt(num); ++i) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    const int n = 10;
+    std::vector<int> vetor(n);
+
+    // Leitura dos valores do vetor
+    std::cout << "Digite 10 números inteiros:" << std::endl;
+    for (int i = 0; i < n; ++i) {
+        std::cout << "v[" << i << "]: ";
+        std::cin >> vetor[i];
+    }
+
+    // Identificar e exibir os números primos e suas posições
+    std::cout << "Elementos primos e suas respectivas posições:" << std::endl;
+    for (int i = 0; i < n; ++i) {
+        if (isPrime(vetor[i])) {
+            std::cout << "Número primo: " << vetor[i] << ", Posição: " << i << std::endl;
+        }
+    }
+
+    return 0;
+}
+
