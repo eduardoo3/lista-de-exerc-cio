@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+
+int main() {
+    const int size = 5;
+    std::vector<int> x(size);
+    std::vector<int> y(size);
+    std::vector<int> soma(size);
+
+    // Leitura dos elementos do vetor x
+    std::cout << "Digite os elementos do vetor x:" << std::endl;
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Elemento " << (i + 1) << ": ";
+        std::cin >> x[i];
+    }
+
+    // Leitura dos elementos do vetor y
+    std::cout << "Digite os elementos do vetor y:" << std::endl;
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Elemento " << (i + 1) << ": ";
+        std::cin >> y[i];
+    }
+
+    // Calcula a soma dos elementos de x e y
+    for (int i = 0; i < size; ++i) {
+        soma[i] = x[i] + y[i];
+    }
+
+    // Mostra o vetor resultado da soma
+    std::cout << "Vetor resultado da soma (x + y):" << std::endl;
+    for (int i = 0; i < size; ++i) {
+        std::cout << soma[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
