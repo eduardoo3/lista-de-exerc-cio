@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <algorithm> // Para utilizar a função std::set_union e std::sort
+
+int main() {
+    const int size = 10;
+    std::vector<int> vetor1(size);
+    std::vector<int> vetor2(size);
+    std::vector<int> uniao(2 * size); // Vetor para armazenar a união, que pode conter até 20 elementos
+
+    // Leitura dos elementos do primeiro vetor
+    std::cout << "Digite os elementos do primeiro vetor:" << std::endl;
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Elemento " << (i + 1) << ": ";
+        std::cin >> vetor1[i];
+    }
+
+    // Leitura dos elementos do segundo vetor
+    std::cout << "Digite os elementos do segundo vetor:" << std::endl;
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Elemento " << (i + 1) << ": ";
+        std::cin >> vetor2[i];
+    }
+
+    // Ordena os vetores para facilitar a união
+    std::sort(vetor1.begin(), vetor1.end());
+    std::sort(vetor2.begin(), vetor2.end());
+
+    // Encontra a união entre os vetores
+    auto it = std::set_union(vetor1.begin(), vetor1.end(),
+                             vetor2.begin(), vetor2.end(),
+                             uniao.begin());
+
+    // Reduz o tamanho do vetor de união para o tamanho real após a união
+    uniao.resize(it - uniao.begin());
+
+    // Mostra os elementos da união
+    std::cout << "Elementos na união dos dois vetores:" << std::endl;
+    for (int i = 0; i < uniao.size(); ++i) {
+        std::cout << uniao[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+
