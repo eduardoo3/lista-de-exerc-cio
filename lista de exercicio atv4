@@ -1,0 +1,35 @@
+#include <iostream>
+
+int main() {
+    // Declaração do vetor com 8 posições
+    int vetor[8];
+
+    // Leitura dos valores do vetor
+    std::cout << "Digite 8 valores para o vetor:" << std::endl;
+    for (int i = 0; i < 8; ++i) {
+        std::cin >> vetor[i];
+    }
+
+    // Declaração das variáveis X e Y
+    int X, Y;
+
+    // Leitura dos valores X e Y
+    std::cout << "Digite a posição X (0 a 7): ";
+    std::cin >> X;
+    std::cout << "Digite a posição Y (0 a 7): ";
+    std::cin >> Y;
+
+    // Verificação se as posições são válidas
+    if (X < 0 || X > 7 || Y < 0 || Y > 7) {
+        std::cout << "Posições inválidas! As posições devem estar entre 0 e 7." << std::endl;
+        return 1;
+    }
+
+    // Cálculo da soma dos valores nas posições X e Y
+    int soma = vetor[X] + vetor[Y];
+
+    // Exibição do resultado
+    std::cout << "A soma dos valores nas posições " << X << " e " << Y << " é: " << soma << std::endl;
+
+    return 0;
+}
