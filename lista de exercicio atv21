@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+
+int main() {
+    const int size = 10;
+    std::vector<int> A(size);
+    std::vector<int> B(size);
+    std::vector<int> C(size);
+
+    // Receber os valores do vetor A
+    std::cout << "Digite os 10 elementos do vetor A:" << std::endl;
+    for(int i = 0; i < size; ++i) {
+        std::cout << "A[" << i << "]: ";
+        std::cin >> A[i];
+    }
+
+    // Receber os valores do vetor B
+    std::cout << "Digite os 10 elementos do vetor B:" << std::endl;
+    for(int i = 0; i < size; ++i) {
+        std::cout << "B[" << i << "]: ";
+        std::cin >> B[i];
+    }
+
+    // Calcular o vetor C como a diferença entre A e B
+    for(int i = 0; i < size; ++i) {
+        C[i] = A[i] - B[i];
+    }
+
+    // Mostrar os valores do vetor C
+    std::cout << "Vetor C (A - B):" << std::endl;
+    for(int i = 0; i < size; ++i) {
+        std::cout << "C[" << i << "]: " << C[i] << std::endl;
+    }
+
+    return 0;
+}
