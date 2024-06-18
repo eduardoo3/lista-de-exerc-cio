@@ -1,0 +1,56 @@
+#include <iostream>
+
+int main() {
+    const int totalNumbers = 6;
+    int numero;
+    int numerosPares[totalNumbers], numerosImpares[totalNumbers];
+    int somaPares = 0;
+    int quantidadeImpares = 0;
+
+    // Inicializa os vetores para evitar lixo de memória
+    for (int i = 0; i < totalNumbers; ++i) {
+        numerosPares[i] = 0;
+        numerosImpares[i] = 0;
+    }
+
+    // Leitura dos 6 números inteiros
+    std::cout << "Digite 6 números inteiros:" << std::endl;
+    for (int i = 0; i < totalNumbers; ++i) {
+        std::cout << "Número " << (i + 1) << ": ";
+        std::cin >> numero;
+
+        if (numero % 2 == 0) {
+            // Número par
+            numerosPares[i] = numero;
+            somaPares += numero;
+        } else {
+            // Número ímpar
+            numerosImpares[quantidadeImpares] = numero;
+            quantidadeImpares++;
+        }
+    }
+
+    // Mostra os números pares digitados
+    std::cout << "Números pares digitados:" << std::endl;
+    for (int i = 0; i < totalNumbers; ++i) {
+        if (numerosPares[i] != 0) {
+            std::cout << numerosPares[i] << " ";
+        }
+    }
+    std::cout << std::endl;
+
+    // Mostra a soma dos números pares digitados
+    std::cout << "Soma dos números pares digitados: " << somaPares << std::endl;
+
+    // Mostra os números ímpares digitados
+    std::cout << "Números ímpares digitados:" << std::endl;
+    for (int i = 0; i < quantidadeImpares; ++i) {
+        std::cout << numerosImpares[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // Mostra a quantidade de números ímpares digitados
+    std::cout << "Quantidade de números ímpares digitados: " << quantidadeImpares << std::endl;
+
+    return 0;
+}
