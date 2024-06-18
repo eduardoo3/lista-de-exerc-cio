@@ -1,0 +1,37 @@
+#include <iostream>
+#include <limits>
+
+int main() {
+    int vetores[5];
+  //leitura dos valores
+    std::cout << "Digite cinco valores:\n";
+    for (int i = 0; i < 5; ++i) {
+        std::cin >> vetores[i];
+    }
+
+    // Encontrar o maior valor e sua posição
+    int maior = vetores[0];
+    int posicao_maior = 0;
+    for (int i = 1; i < 5; ++i) {
+        if (vetores[i] > maior) {
+            maior = vetores[i];
+            posicao_maior = i;
+        }
+    }
+
+    // Encontrar o menor valor e sua posição
+    int menor = vetores[0];
+    int posicao_menor = 0;
+    for (int i = 1; i < 5; ++i) {
+        if (vetores[i] < menor) {
+            menor = vetores[i];
+            posicao_menor = i;
+        }
+    }
+
+    // Exibir a posição do maior e do menor valor
+    std::cout << "O maior valor: " << maior << " está na posição: " << posicao_maior << std::endl;
+    std::cout << "O menor valor: " << menor << " está na posição: " << posicao_menor << std::endl;
+
+    return 0;
+}
