@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Declaração do vetor de 10 posições para números inteiros
+    int vetor[10];
+
+    // Leitura dos valores para o vetor
+    cout << "Digite 10 números inteiros:" << endl;
+    for (int i = 0; i < 10; ++i) {
+        cout << "Número " << i + 1 << ": ";
+        cin >> vetor[i];
+    }
+
+    // Leitura do número x
+    int x;
+    cout << "Digite um número inteiro x: ";
+    cin >> x;
+
+    // Contagem e exibição dos múltiplos de x
+    int contagem = 0;
+    cout << "Múltiplos de " << x << " no vetor:" << endl;
+    for (int i = 0; i < 10; ++i) {
+        if (vetor[i] % x == 0) {
+            cout << vetor[i] << " ";
+            contagem++;
+        }
+    }
+
+    cout << endl << "Quantidade de múltiplos de " << x << ": " << contagem << endl;
+
+    return 0;
+}
