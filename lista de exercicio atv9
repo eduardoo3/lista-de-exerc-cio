@@ -1,0 +1,18 @@
+#include <iostream>
+//Crie um programa que leˆ 6 valores inteiros pares e, em seguida, mostre na tela os valores lidos na ordem inversa.
+ int main(){
+const int SIZE = 6;
+  int vetor[SIZE];
+  //leitura dos valores 
+  std::cout << "digite 6 valores pares\n";
+  for(int i = 0; i < 6; i++){
+  std::cin >> vetor[i];}
+
+  //codigo de inversao dos valores 
+  std::cout << "Os valores na ordem inversa são:\n";
+  for (int i = SIZE - 1; i >= 0; i--) {
+      std::cout << vetor[i] << " ";
+  }
+  std::cout << std::endl;
+  return 0;
+}
