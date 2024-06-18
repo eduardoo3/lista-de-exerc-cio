@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+
+
+int main() {
+  //solicitaçao das notas dos alunos
+  std::cout << "Digite a nota dos 15 alunos para saber a media\n";
+  for (int i = 1; i <= 16; i++) { 
+  //pedido da nota individual dos alunos por linha
+  }
+  //formula para a soma da media
+  double soma = 0.0;
+  for (int i = 1; i < 16; ++i) {
+      double num;
+      std::cout << "Digite a nota do aluno " << i << ": ";
+      std::cin >> num;
+      soma += num;
+  }
+
+  double media = soma / 15;
+  std::cout << "A média é: " << media << std::endl;
+  
+  return 0;
+}
