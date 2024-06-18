@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+
+int main() {
+    const int size = 5;
+    std::vector<double> A(size);
+    std::vector<double> B(size);
+    double produtoEscalar = 0.0;
+
+    // Receber os valores do vetor A
+    std::cout << "Digite os 5 elementos do vetor A:" << std::endl;
+    for(int i = 0; i < size; ++i) {
+        std::cout << "A[" << i << "]: ";
+        std::cin >> A[i];
+    }
+
+    // Receber os valores do vetor B
+    std::cout << "Digite os 5 elementos do vetor B:" << std::endl;
+    for(int i = 0; i < size; ++i) {
+        std::cout << "B[" << i << "]: ";
+        std::cin >> B[i];
+    }
+
+    // Calcular o produto escalar
+    for(int i = 0; i < size; ++i) {
+        produtoEscalar += A[i] * B[i];
+    }
+
+    // Mostrar os valores dos vetores A e B
+    std::cout << "Vetor A: ";
+    for(int i = 0; i < size; ++i) {
+        std::cout << A[i] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Vetor B: ";
+    for(int i = 0; i < size; ++i) {
+        std::cout << B[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // Mostrar o produto escalar
+    std::cout << "Produto Escalar: " << produtoEscalar << std::endl;
+
+    return 0;
+}
