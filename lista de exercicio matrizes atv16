@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+const int NUM_QUESTOES = 10;
+const int NUM_ALUNOS = 3;
+
+struct Aluno {
+    int matricula;
+    char respostas[NUM_QUESTOES];
+    int nota;
+};
+
+// Função para calcular a nota de um aluno com base no gabarito
+int calcularNota(char respostasAluno[], char gabarito[]) {
+    int nota = 0;
+    for (int i = 0; i < NUM_QUESTOES; ++i) {
+        if (respostasAluno[i] == gabarito[i]) {
+            nota++;
+        }
+    }
+    return nota;
+}
+
+int main() {
+    char gabarito[NUM_QUESTOES];
+    Aluno alunos[NUM_ALUNOS];
+
+    // Leitura do gabarito
+    cout << "Digite as respostas do gabarito (a, b, c, d ou e):" << endl;
+    for (int i = 0; i < NUM_QUESTOES; ++i) {
+        cout << "Questao " << i + 1 << ": ";
+        cin >> gabarito[i];
+    }
+
+    // Leitura das respostas dos alunos
+    for (int i = 0; i < NUM_ALUNOS; ++i) {
+        cout << "\nAluno " << i + 1 << ":" << endl;
+        cout << "Matricula: ";
+        cin >> alunos[i].matricula;
+        cout << "Respostas (a, b, c, d ou e): ";
+        for (int j = 0; j < NUM_QUESTOES; ++j) {
+            cin >> alunos[i].respostas[j];
+        }
+        // Calcular nota do aluno
+        alunos[i].nota = calcularNota(alunos[i].respostas, gabarito);
+    }
+
+    // Exibir resultados
+    cout << "\nResultados dos alunos:" << endl;
+    for (int i = 0; i < NUM_ALUNOS; ++i) {
+        cout << "\nAluno " << i + 1 << ":" << endl;
+        cout << "Matricula: " << alunos[i].matricula << endl;
+        cout << "Respostas: ";
+        for (int j = 0; j < NUM_QUESTOES; ++j) {
+            cout << alunos[i].respostas[j] << " ";
+        }
+        cout << "\nNota: " << alunos[i].nota << " pontos" << endl;
+    }
+
+    // Calcular percentual de aprovação
+    int numAprovados = 0;
+    for (int i = 0; i < NUM_ALUNOS; ++i) {
+        if (alunos[i].nota >= 7) {
+            numAprovados++;
+        }
+    }
+    double percentualAprovacao = (static_cast<double>(numAprovados) / NUM_ALUNOS) * 100.0;
+
+    // Exibir percentual de aprovação
+    cout << "\nPercentual de aprovacao: " << percentualAprovacao << "%" << endl;
+
+    return 0;
+}
