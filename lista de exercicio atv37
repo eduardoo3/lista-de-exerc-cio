@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+
+void stoogeSort(std::vector<int>& vetor, int inicio, int fim) {
+    if (inicio >= fim) {
+        return;
+    }
+
+    // Se o elemento no início é maior que o elemento no fim, troca-os
+    if (vetor[inicio] > vetor[fim]) {
+        std::swap(vetor[inicio], vetor[fim]);
+    }
+
+    // Se houver três ou mais elementos no subvetor
+    if (fim - inicio + 1 > 2) {
+        int terco = (fim - inicio + 1) / 3;
+
+        // Ordena os primeiros 2/3 do vetor
+        stoogeSort(vetor, inicio, fim - terco);
+
+        // Ordena os últimos 2/3 do vetor
+        stoogeSort(vetor, inicio + terco, fim);
+
+        // Ordena novamente os primeiros 2/3 do vetor
+        stoogeSort(vetor, inicio, fim - terco);
+    }
+}
+
+int main() {
+    std::vector<int> vetor = {1, 2, 3, 4, 5, 6, 11, 10, 9, 8, 7};
+
+    std::cout << "Vetor antes da ordenacao:" << std::endl;
+    for (int num : vetor) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    stoogeSort(vetor, 0, vetor.size() - 1);
+
+    std::cout << "Vetor ordenado:" << std::endl;
+    for (int num : vetor) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
