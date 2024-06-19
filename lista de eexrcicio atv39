@@ -1,0 +1,35 @@
+#include <iostream>
+
+// Função para calcular o coeficiente binomial C(n, k)
+int coeficienteBinomial(int n, int k) {
+    if (k == 0 || k == n) {
+        return 1;
+    } else {
+        // Usando a fórmula de coeficiente binomial recursivamente
+        return coeficienteBinomial(n-1, k-1) + coeficienteBinomial(n-1, k);
+    }
+}
+
+// Função para imprimir o Triângulo de Pascal com n linhas
+void trianguloDePascal(int n) {
+    for (int linha = 0; linha < n; linha++) {
+        for (int coluna = 0; coluna <= linha; coluna++) {
+            // Imprime o coeficiente binomial para cada posição na linha
+            std::cout << coeficienteBinomial(linha, coluna) << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+int main() {
+    int n;
+
+    // Leitura do número de linhas desejado
+    std::cout << "Digite o número de linhas do Triângulo de Pascal: ";
+    std::cin >> n;
+
+    // Chama a função para imprimir o Triângulo de Pascal com n linhas
+    trianguloDePascal(n);
+
+    return 0;
+}
