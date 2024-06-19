@@ -1,0 +1,66 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+const int SIZE = 3;
+
+// Função para determinar a próxima jogada
+pair<int, int> proximaJogada(vector<vector<int>>& tabuleiro) {
+    pair<int, int> jogada;
+
+    // Percorre o tabuleiro para encontrar a primeira casa vazia (valor 0)
+    for (int i = 0; i < SIZE; ++i) {
+        for (int j = 0; j < SIZE; ++j) {
+            if (tabuleiro[i][j] == 0) {
+                jogada.first = i;
+                jogada.second = j;
+                return jogada;
+            }
+        }
+    }
+
+    // Se não houver casa vazia (o que não deveria ocorrer neste contexto de jogo da velha), retorna {-1, -1}
+    jogada = {-1, -1};
+    return jogada;
+}
+
+// Função para imprimir o tabuleiro
+void imprimirTabuleiro(vector<vector<int>>& tabuleiro) {
+    for (int i = 0; i < SIZE; ++i) {
+        for (int j = 0; j < SIZE; ++j) {
+            if (tabuleiro[i][j] == -1) {
+                cout << "X ";
+            } else if (tabuleiro[i][j] == 1) {
+                cout << "O ";
+            } else {
+                cout << "- ";
+            }
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    vector<vector<int>> tabuleiro = {
+        {-1, 1, 1},
+        {-1, -1, 0},
+        {0, 1, 0}
+    };
+
+    // Imprime o tabuleiro inicial
+    cout << "Tabuleiro atual:" << endl;
+    imprimirTabuleiro(tabuleiro);
+
+    // Determina a próxima jogada
+    pair<int, int> proxima = proximaJogada(tabuleiro);
+
+    // Verifica se encontrou uma jogada válida
+    if (proxima.first == -1 && proxima.second == -1) {
+        cout << "Não há casas vazias para fazer a próxima jogada." << endl;
+    } else {
+        cout << "\nPróxima jogada:" << endl;
+        cout << "Jogar na posição (" << proxima.first << ", " << proxima.second << ")" << endl;
+    }
+
+    return 0;
+}
