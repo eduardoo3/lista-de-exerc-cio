@@ -1,0 +1,26 @@
+#include <iostream>
+
+int main() {
+    const int tamanho = 4;
+    int matriz[tamanho][tamanho];
+    int contador = 0;
+
+    // Leitura da matriz
+    std::cout << "Digite os elementos da matriz " << tamanho << "x" << tamanho << ":" << std::endl;
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = 0; j < tamanho; ++j) {
+            std::cout << "Elemento [" << i << "][" << j << "]: ";
+            std::cin >> matriz[i][j];
+
+            // Verifica se o elemento é maior que 10
+            if (matriz[i][j] > 10) {
+                contador++;
+            }
+        }
+    }
+
+    // Exibição do número de valores maiores que 10
+    std::cout << "A matriz possui " << contador << " valores maiores que 10." << std::endl;
+
+    return 0;
+}
