@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstdlib>   // para utilizar a função rand()
+#include <ctime>     // para utilizar a função time()
+
+const int tamanho = 4;
+
+int main() {
+    int matriz[tamanho][tamanho];
+
+    // Inicialização do gerador de números aleatórios
+    srand(time(NULL));
+
+    // Preenchimento da matriz original com valores aleatórios de 1 a 20
+    std::cout << "Matriz original:" << std::endl;
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = 0; j < tamanho; ++j) {
+            matriz[i][j] = rand() % 20 + 1;  // números de 1 a 20
+            std::cout << matriz[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    // Transformação para matriz triangular inferior
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = i + 1; j < tamanho; ++j) {
+            matriz[i][j] = 0;
+        }
+    }
+
+    // Impressão da matriz transformada
+    std::cout << "\nMatriz transformada em triangular inferior:" << std::endl;
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = 0; j < tamanho; ++j) {
+            std::cout << matriz[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
