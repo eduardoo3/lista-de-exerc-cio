@@ -1,0 +1,116 @@
+#include <iostream>
+using namespace std;
+
+const int LINHAS = 2;
+const int COLUNAS = 2;
+
+// Função para somar duas matrizes
+void somarMatrizes(double matriz1[LINHAS][COLUNAS], double matriz2[LINHAS][COLUNAS], double resultado[LINHAS][COLUNAS]) {
+    for (int i = 0; i < LINHAS; ++i) {
+        for (int j = 0; j < COLUNAS; ++j) {
+            resultado[i][j] = matriz1[i][j] + matriz2[i][j];
+        }
+    }
+}
+
+// Função para subtrair a primeira matriz da segunda
+void subtrairMatrizes(double matriz1[LINHAS][COLUNAS], double matriz2[LINHAS][COLUNAS], double resultado[LINHAS][COLUNAS]) {
+    for (int i = 0; i < LINHAS; ++i) {
+        for (int j = 0; j < COLUNAS; ++j) {
+            resultado[i][j] = matriz2[i][j] - matriz1[i][j];
+        }
+    }
+}
+
+// Função para adicionar uma constante às matrizes
+void adicionarConstante(double matriz[LINHAS][COLUNAS], double constante) {
+    for (int i = 0; i < LINHAS; ++i) {
+        for (int j = 0; j < COLUNAS; ++j) {
+            matriz[i][j] += constante;
+        }
+    }
+}
+
+// Função para imprimir uma matriz
+void imprimirMatriz(double matriz[LINHAS][COLUNAS]) {
+    for (int i = 0; i < LINHAS; ++i) {
+        for (int j = 0; j < COLUNAS; ++j) {
+            cout << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    double matriz1[LINHAS][COLUNAS];
+    double matriz2[LINHAS][COLUNAS];
+    double resultado[LINHAS][COLUNAS];
+    double constante;
+
+    // Leitura das matrizes
+    cout << "Entre com os valores da primeira matriz " << LINHAS << " x " << COLUNAS << ":" << endl;
+    for (int i = 0; i < LINHAS; ++i) {
+        for (int j = 0; j < COLUNAS; ++j) {
+            cout << "Matriz1[" << i << "][" << j << "]: ";
+            cin >> matriz1[i][j];
+        }
+    }
+
+    cout << "\nEntre com os valores da segunda matriz " << LINHAS << " x " << COLUNAS << ":" << endl;
+    for (int i = 0; i < LINHAS; ++i) {
+        for (int j = 0; j < COLUNAS; ++j) {
+            cout << "Matriz2[" << i << "][" << j << "]: ";
+            cin >> matriz2[i][j];
+        }
+    }
+
+    int opcao;
+    do {
+        // Menu de opções
+        cout << "\nMenu de Opções:" << endl;
+        cout << "(a) Somar as duas matrizes" << endl;
+        cout << "(b) Subtrair a primeira matriz da segunda" << endl;
+        cout << "(c) Adicionar uma constante às duas matrizes" << endl;
+        cout << "(d) Imprimir as matrizes" << endl;
+        cout << "(0) Sair do programa" << endl;
+        cout << "Escolha uma opção: ";
+        cin >> opcao;
+
+        switch (opcao) {
+            case 'a':
+                somarMatrizes(matriz1, matriz2, resultado);
+                cout << "\nResultado da soma das matrizes:" << endl;
+                imprimirMatriz(resultado);
+                break;
+            case 'b':
+                subtrairMatrizes(matriz1, matriz2, resultado);
+                cout << "\nResultado da subtração (Matriz2 - Matriz1):" << endl;
+                imprimirMatriz(resultado);
+                break;
+            case 'c':
+                cout << "Entre com a constante a ser adicionada às matrizes: ";
+                cin >> constante;
+                adicionarConstante(matriz1, constante);
+                adicionarConstante(matriz2, constante);
+                cout << "\nMatriz 1 após adição da constante:" << endl;
+                imprimirMatriz(matriz1);
+                cout << "\nMatriz 2 após adição da constante:" << endl;
+                imprimirMatriz(matriz2);
+                break;
+            case 'd':
+                cout << "\nMatriz 1:" << endl;
+                imprimirMatriz(matriz1);
+                cout << "\nMatriz 2:" << endl;
+                imprimirMatriz(matriz2);
+                break;
+            case '0':
+                cout << "Encerrando o programa." << endl;
+                break;
+            default:
+                cout << "Opção inválida! Escolha uma opção válida." << endl;
+        }
+
+    } while (opcao != '0');
+
+    return 0;
+}
