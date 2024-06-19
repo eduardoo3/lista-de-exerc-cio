@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cstdlib>   // para utilizar a função rand()
+#include <ctime>     // para utilizar a função time()
+
+const int NUMERO_MAXIMO = 99;
+const int NUM_LINHAS = 5;
+const int NUM_COLUNAS = 5;
+
+// Função para verificar se um número já existe na cartela
+bool numeroExiste(int cartela[][NUM_COLUNAS], int num, int linha, int coluna) {
+    for (int i = 0; i < linha; ++i) {
+        for (int j = 0; j < NUM_COLUNAS; ++j) {
+            if (cartela[i][j] == num) {
+                return true;
+            }
+        }
+    }
+    for (int j = 0; j < coluna; ++j) {
+        if (cartela[linha][j] == num) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int main() {
+    int cartela[NUM_LINHAS][NUM_COLUNAS] = {0};
+    int numerosGerados[NUMERO_MAXIMO + 1] = {0};  // vetor para marcar os números já gerados
+    int numAleatorio;
+
+    // Inicialização do gerador de números aleatórios
+    srand(time(NULL));
+
+    // Gerar os números da cartela
+    for (int i = 0; i < NUM_LINHAS; ++i) {
+        for (int j = 0; j < NUM_COLUNAS; ++j) {
+            do {
+                numAleatorio = rand() % (NUMERO_MAXIMO + 1);  // gera número aleatório entre 0 e 99
+            } while (numerosGerados[numAleatorio] != 0 || numAleatorio == 0);  // garante que o número seja único e não seja zero
+
+            cartela[i][j] = numAleatorio;
+            numerosGerados[numAleatorio] = 1;  // marca o número como gerado
+        }
+    }
+
+    // Exibir a cartela gerada
+    std::cout << "Cartela de Bingo gerada:" << std::endl;
+    for (int i = 0; i < NUM_LINHAS; ++i) {
+        for (int j = 0; j < NUM_COLUNAS; ++j) {
+            std::cout << cartela[i][j] << "\t";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
