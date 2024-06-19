@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <algorithm> // Para std::sort
+
+int main() {
+    const int tamanho = 10;
+    std::vector<int> vetor;
+
+    std::cout << "Digite 10 valores numéricos:" << std::endl;
+
+    // Loop para ler e ordenar os valores
+    for (int i = 0; i < tamanho; ++i) {
+        int valor;
+        std::cout << "Valor " << (i + 1) << ": ";
+        std::cin >> valor;
+
+        // Inserir o valor no vetor
+        vetor.push_back(valor);
+
+        // Ordenar o vetor após cada inserção
+        std::sort(vetor.begin(), vetor.end());
+
+        // Exibir o vetor ordenado até o momento
+        std::cout << "Valores ordenados até agora:" << std::endl;
+        for (int j = 0; j <= i; ++j) {
+            std::cout << vetor[j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    // Exibir o vetor completamente ordenado
+    std::cout << "\nValores ordenados final:" << std::endl;
+    for (int num : vetor) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
