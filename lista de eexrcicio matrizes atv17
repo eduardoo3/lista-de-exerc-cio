@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+const int NUM_ALUNOS = 10;
+const int NUM_PROVAS = 3;
+
+int main() {
+    // Declaração da matriz de notas
+    int notas[NUM_ALUNOS][NUM_PROVAS];
+
+    // Leitura das notas
+    cout << "Digite as notas dos alunos:" << endl;
+    for (int i = 0; i < NUM_ALUNOS; ++i) {
+        cout << "Aluno " << i + 1 << ":" << endl;
+        for (int j = 0; j < NUM_PROVAS; ++j) {
+            cout << "Prova " << j + 1 << ": ";
+            cin >> notas[i][j];
+        }
+    }
+
+    // Inicialização dos contadores para as piores notas
+    int piorNotaProva1 = 0, piorNotaProva2 = 0, piorNotaProva3 = 0;
+
+    // Identificação das piores notas
+    for (int i = 0; i < NUM_ALUNOS; ++i) {
+        int menorNota = notas[i][0]; // Assume inicialmente que a pior nota é da prova 1
+        int indiceMenorNota = 0;
+
+        // Verifica se há nota menor em outras provas
+        for (int j = 1; j < NUM_PROVAS; ++j) {
+            if (notas[i][j] < menorNota) {
+                menorNota = notas[i][j];
+                indiceMenorNota = j;
+            }
+        }
+
+        // Contabiliza a pior nota em cada prova
+        if (indiceMenorNota == 0)
+            piorNotaProva1++;
+        else if (indiceMenorNota == 1)
+            piorNotaProva2++;
+        else if (indiceMenorNota == 2)
+            piorNotaProva3++;
+    }
+
+    // Exibição dos resultados
+    cout << "\nNumero de alunos com pior nota na prova 1: " << piorNotaProva1 << endl;
+    cout << "Numero de alunos com pior nota na prova 2: " << piorNotaProva2 << endl;
+    cout << "Numero de alunos com pior nota na prova 3: " << piorNotaProva3 << endl;
+
+    return 0;
+}
