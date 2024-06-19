@@ -1,0 +1,48 @@
+#include <iostream>
+
+int main() {
+    const int tamanho = 4;
+    int matriz1[tamanho][tamanho];
+    int matriz2[tamanho][tamanho];
+    int matrizMaior[tamanho][tamanho];
+
+    // Leitura da primeira matriz
+    std::cout << "Digite os elementos da primeira matriz " << tamanho << "x" << tamanho << ":" << std::endl;
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = 0; j < tamanho; ++j) {
+            std::cout << "Elemento [" << i << "][" << j << "]: ";
+            std::cin >> matriz1[i][j];
+        }
+    }
+
+    // Leitura da segunda matriz
+    std::cout << "Digite os elementos da segunda matriz " << tamanho << "x" << tamanho << ":" << std::endl;
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = 0; j < tamanho; ++j) {
+            std::cout << "Elemento [" << i << "][" << j << "]: ";
+            std::cin >> matriz2[i][j];
+        }
+    }
+
+    // Construção da terceira matriz com os maiores valores
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = 0; j < tamanho; ++j) {
+            if (matriz1[i][j] > matriz2[i][j]) {
+                matrizMaior[i][j] = matriz1[i][j];
+            } else {
+                matrizMaior[i][j] = matriz2[i][j];
+            }
+        }
+    }
+
+    // Exibição da terceira matriz com os maiores valores
+    std::cout << "\nTerceira matriz com os maiores valores:" << std::endl;
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = 0; j < tamanho; ++j) {
+            std::cout << matrizMaior[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
