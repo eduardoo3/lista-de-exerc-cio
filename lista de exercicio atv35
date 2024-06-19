@@ -1,0 +1,74 @@
+#include <iostream>
+#include <vector>
+
+// Função para converter um número em um vetor de dígitos
+std::vector<int> numeroParaVetor(int numero) {
+    std::vector<int> digitos;
+
+    while (numero > 0) {
+        digitos.push_back(numero % 10); // Obtém o dígito menos significativo
+        numero /= 10; // Remove o dígito menos significativo
+    }
+
+    // Se o número for zero, adicionamos pelo menos um dígito zero
+    if (digitos.empty()) {
+        digitos.push_back(0);
+    }
+
+    return digitos;
+}
+
+// Função para somar dois vetores de dígitos
+std::vector<int> somaDeVetores(const std::vector<int>& vetorA, const std::vector<int>& vetorB) {
+    int tamanhoMaximo = std::max(vetorA.size(), vetorB.size());
+    std::vector<int> soma(tamanhoMaximo, 0); // Inicializa a soma com zeros
+
+    int carry = 0; // Variável para armazenar o vai um
+
+    for (int i = 0; i < tamanhoMaximo; ++i) {
+        int digitoA = (i < vetorA.size()) ? vetorA[i] : 0;
+        int digitoB = (i < vetorB.size()) ? vetorB[i] : 0;
+
+        int resultado = digitoA + digitoB + carry;
+
+        if (resultado >= 10) {
+            carry = 1;
+            resultado -= 10;
+        } else {
+            carry = 0;
+        }
+
+        soma[i] = resultado;
+    }
+
+    // Se houver um carry restante ao final, adicionamos um novo dígito
+    if (carry > 0) {
+        soma.push_back(carry);
+    }
+
+    return soma;
+}
+
+int main() {
+    int a, b;
+
+    // Leitura dos números a e b
+    std::cout << "Digite dois números positivos menores que 10000:" << std::endl;
+    std::cin >> a >> b;
+
+    // Convertendo os números em vetores de dígitos
+    std::vector<int> vetorA = numeroParaVetor(a);
+    std::vector<int> vetorB = numeroParaVetor(b);
+
+    // Somando os vetores de dígitos
+    std::vector<int> vetorSoma = somaDeVetores(vetorA, vetorB);
+
+    // Exibindo o vetor soma (em ordem inversa, pois o dígito menos significativo está na última posição)
+    std::cout << "Vetor soma dos números digitados:" << std::endl;
+    for (int i = vetorSoma.size() - 1; i >= 0; --i) {
+        std::cout << vetorSoma[i];
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
