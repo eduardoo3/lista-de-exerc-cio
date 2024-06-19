@@ -1,0 +1,25 @@
+#include <iostream>
+
+int main() {
+    const int tamanho = 5;
+    int matriz[tamanho][tamanho];
+
+    // Preenchimento da matriz
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = 0; j < tamanho; ++j) {
+            // Se estiver na diagonal principal (i == j), atribui 1; caso contrário, atribui 0
+            matriz[i][j] = (i == j) ? 1 : 0;
+        }
+    }
+
+    // Exibição da matriz
+    std::cout << "Matriz 5x5 com diagonal principal de 1 e demais elementos 0:" << std::endl;
+    for (int i = 0; i < tamanho; ++i) {
+        for (int j = 0; j < tamanho; ++j) {
+            std::cout << matriz[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
